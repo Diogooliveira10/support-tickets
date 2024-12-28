@@ -1,3 +1,4 @@
+import { table } from "node:console"
 import fs from "node:fs/promises"
 
 const DATABASE_PATH = new URL("db.json", import.meta.url)
@@ -27,5 +28,10 @@ export class Database {
         }
 
         this.#persist()
+    }
+
+    select(table) {
+        let data = this.#database[table] ?? []
+        return data
     }
 }
